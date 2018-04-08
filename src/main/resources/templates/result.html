@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Wynik</title>
+    <script src="vendors/jquery.js"></script>
+    <script src="vendors/js/bootstrap.min.js"></script>
+    <link href="vendors/css/bootstrap.min.css" rel="stylesheet">
+    <script src="vendors/fontawesome/fontawesome-all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="result_styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th colspan="2">Wyniki</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Opis</td>
+                <td><p id="descript" th:text="${dscrp}"/></td>
+            </tr>
+            <tr>
+                <td>Data i godzina wyjazdu</td>
+                <td><p id="leaveTime" th:text="${leave}"/></td>
+            </tr>
+            <tr>
+                <td>Data i godzina powrotu</td>
+                <td><p id="arriveTime" th:text="${arrive}"/></td>
+            </tr>
+            <tr>
+                <td>Całkowity czas podrózy</td>
+                <td><p id="totalTime" th:text="${total}"/></td>
+            </tr>
+            <tr>
+                <td>Wysokość diet</td>
+                <td><p id="dietCost" th:text="${diet}"/></td>
+            </tr>
+            <tr>
+                <td>Ilość śniadań</td>
+                <td><p id="breakfastAmount" th:text="${breakfast}"/></td>
+            </tr>
+            <tr>
+                <td>Ilość obiadów</td>
+                <td><p id="dinnerAmount" th:text="${dinner}"/></td>
+            </tr>
+            <tr>
+                <td>Ilość kolacji</td>
+                <td><p id="supperAmount" th:text="${supper}"/></td>
+            </tr>
+            <tr>
+                <td>Łączna kwota zmniejszająca diety z tytułu zapewnionego bezpłatnego wyżywienia</td>
+                <td><p id="freeFoodCost" th:text="${freeFood}"/></td>
+            </tr>
+            <tr>
+                <td>Łączna wysokość diet:</td>
+                <td><p id="dietValue" th:text="${totalDiet}"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
