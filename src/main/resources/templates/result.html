@@ -113,6 +113,13 @@
                 <td><p id="returnPay" th:text="${rtrnPay}"/></td>
             </tr>
 
+            <th:block th:each="cost, cIndex : ${calculateTrip.costs}">
+                <tr>
+                    <td th:text="${cost}"></td>
+                    <td th:text="${calculateTrip.amounts[__${cIndex .index}__]}"></td>
+                </tr>
+            </th:block>
+
             <tr>
                 <td>Suma kosztów</td>
                 <td><p id="sumCosts" th:text="${costs}"/></td>

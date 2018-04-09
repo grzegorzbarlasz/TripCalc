@@ -7,6 +7,9 @@ import org.joda.time.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter@Setter
 public class CalculateTrip {
     private String descript;
@@ -36,6 +39,10 @@ public class CalculateTrip {
     private Double advance;
     private Double payment;
     private Double sumCosts;
+    private List<String> costs;
+    private List<String> amounts;
+    private List<Double> dbAmounts;
+    private Double otherExpensesSum;
 
     private CalculatorModel calculatorModel;
     public CalculateTrip(CalculatorModel calculatorModel) throws ParseException {
@@ -49,7 +56,8 @@ public class CalculateTrip {
         travelCosts();
         accommodation();
         localCommunication();
-        score(dietValue, ticketPrice, trvlCost, lump, sleepBill, pLump, returnPay);
+        otherExpenses();
+        score(dietValue, ticketPrice, trvlCost, lump, sleepBill, pLump, returnPay, otherExpensesSum);
     }
 
     private void description() throws ParseException {
@@ -176,16 +184,35 @@ public class CalculateTrip {
     }
 
     private void otherExpenses() throws ParseException {
+        List<String> costs;
+        List<String> amounts;
+        Double otherExpensesSum = 0.0;
+        List<Double> dbAmounts = new ArrayList<Double>();
 
+        costs = calculatorModel.getCosts();
+        amounts = calculatorModel.getAmounts();
+
+        for(String amnts : amounts){
+            dbAmounts.add(Double.valueOf(amnts));
+        }
+
+        for(Double othExpSum : dbAmounts){
+            otherExpensesSum += othExpSum;
+        }
+
+        this.otherExpensesSum = otherExpensesSum;
+        this.costs = costs;
+        this.amounts = amounts;
+        this.dbAmounts = dbAmounts;
     }
 
     private void score(Double dietValue, Double ticketPrice, Double trvlCost, Double lump, Double sleepBill,
-                       Double pLump, Double returnPay) throws ParseException{
+                       Double pLump, Double returnPay, Double otherExpensesSum) throws ParseException{
         Double sumCosts;
         Double advance;
         Double payment;
 
-        sumCosts = dietValue + ticketPrice + trvlCost + lump + sleepBill + pLump + returnPay;
+        sumCosts = dietValue + ticketPrice + trvlCost + lump + sleepBill + pLump + returnPay + otherExpensesSum;
         advance = Double.valueOf(calculatorModel.getAdvance());
         payment = sumCosts - advance;
 

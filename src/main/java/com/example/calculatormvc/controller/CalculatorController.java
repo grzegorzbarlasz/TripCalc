@@ -12,7 +12,6 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Controller
 public class CalculatorController {
 
@@ -55,12 +54,12 @@ public class CalculatorController {
         attributes.put("pLmpSum", calculateTrip.getPLumpSum());
         attributes.put("pLmp", calculateTrip.getPLump().toString());
         attributes.put("rtrnPay", calculateTrip.getReturnPay().toString());
-
         attributes.put("costs", calculateTrip.getSumCosts().toString());
         attributes.put("advnc", calculateTrip.getAdvance().toString());
         attributes.put("paymnt", calculateTrip.getPayment().toString());
         model.addAllAttributes(attributes);
         return "result";
+
     }
 
 }
