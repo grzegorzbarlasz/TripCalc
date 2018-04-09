@@ -20,7 +20,22 @@ public class CalculateTrip {
     private Double freeFoodCost;
     private Double totalDietCost;
     private Double dietValue;
-
+    private String transType;
+    private Double ticketPrice;
+    private Double ovCcm;
+    private Double unCcm;
+    private Double motorcycle;
+    private Double motBicycle;
+    private Double trvlCost;
+    private String lumpSum;
+    private Double sleepBill;
+    private Double lump;
+    private String pLumpSum;
+    private Double returnPay;
+    private Double pLump;
+    private Double advance;
+    private Double payment;
+    private Double sumCosts;
 
     private CalculatorModel calculatorModel;
     public CalculateTrip(CalculatorModel calculatorModel) throws ParseException {
@@ -29,6 +44,12 @@ public class CalculateTrip {
         totalTripTime();
         dishes();
         diet(dietCost, freeFoodCost);
+        transportType();
+        tcktPrice();
+        travelCosts();
+        accommodation();
+        localCommunication();
+        score(dietValue, ticketPrice, trvlCost, lump, sleepBill, pLump, returnPay);
     }
 
     private void description() throws ParseException {
@@ -86,18 +107,71 @@ public class CalculateTrip {
         this.dietValue = dietValue;
     }
 
+    private void transportType() throws ParseException {
+        String transType;
+        transType = calculatorModel.getTransType();
+
+        this.transType = transType;
+    }
+
+    private void tcktPrice() throws  ParseException {
+        Double ticketPrice;
+        ticketPrice = Double.valueOf(calculatorModel.getTicketPrice());
+
+        this.ticketPrice = ticketPrice;
+    }
+
     private void travelCosts() throws ParseException {
         //<900 1km = 0.52
         //>900 1km = 0,84
         //motocykl 1km = 0,23
         //motorower 1km = 0,14
+        Double unCcm;
+        Double ovCcm;
+        Double motorcycle;
+        Double motBicycle;
+        Double trvlCost;
+
+        unCcm = Double.valueOf(calculatorModel.getUnCcm());
+        ovCcm = Double.valueOf(calculatorModel.getOvCcm());
+        motorcycle = Double.valueOf(calculatorModel.getMotorcycle());
+        motBicycle = Double.valueOf(calculatorModel.getMotBicycle());
+
+        trvlCost = unCcm * 0.52 + ovCcm * 0.84 + motorcycle * 0.23 + motBicycle * 0.14;
+
+        this.unCcm = unCcm;
+        this.ovCcm = ovCcm;
+        this.motorcycle = motorcycle;
+        this.motBicycle = motBicycle;
+        this.trvlCost = trvlCost;
     }
 
     private void accommodation() throws ParseException {
+        String lumpSum;
+        Double lump;
+        Double sleepBill;
 
+        lumpSum = calculatorModel.getLumpSum();
+        lump = Integer.parseInt(lumpSum) * 45.0;
+        sleepBill = Double.valueOf(calculatorModel.getSleepBill());
+
+        this.lumpSum = lumpSum;
+        this.sleepBill = sleepBill;
+        this.lump = lump;
     }
 
     private void localCommunication() throws ParseException {
+        String pLumpSum;
+        Double pLump;
+        Double returnPay;
+
+        pLumpSum = calculatorModel.getpLumpSum();
+        pLump = Integer.parseInt(pLumpSum) * 6.0;
+        returnPay = Double.valueOf(calculatorModel.getReturnPay());
+
+        this.pLumpSum = pLumpSum;
+        this.pLump = pLump;
+        this.returnPay = returnPay;
 
     }
 
@@ -105,8 +179,19 @@ public class CalculateTrip {
 
     }
 
-    private void score() throws ParseException{
+    private void score(Double dietValue, Double ticketPrice, Double trvlCost, Double lump, Double sleepBill,
+                       Double pLump, Double returnPay) throws ParseException{
+        Double sumCosts;
+        Double advance;
+        Double payment;
 
+        sumCosts = dietValue + ticketPrice + trvlCost + lump + sleepBill + pLump + returnPay;
+        advance = Double.valueOf(calculatorModel.getAdvance());
+        payment = sumCosts - advance;
+
+        this.sumCosts = sumCosts;
+        this.payment = payment;
+        this.advance = advance;
     }
 
 }

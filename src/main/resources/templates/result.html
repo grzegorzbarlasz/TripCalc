@@ -57,9 +57,75 @@
                 <td><p id="freeFoodCost" th:text="${freeFood}"/></td>
             </tr>
             <tr>
-                <td>Łączna wysokość diet:</td>
+                <td>Łączna wysokość diet</td>
                 <td><p id="dietValue" th:text="${totalDiet}"/></td>
             </tr>
+            <tr>
+                <td>Rodzaj środka transportu</td>
+                <td><p id="transType" th:text="${trnsprtType}"/></td>
+            </tr>
+            <tr>
+                <td>Koszty przejazdów według ceny biletu</td>
+                <td><p id="ticketPrice" th:text="${tcktPrice}"/></td>
+            </tr>
+            <tr>
+                <td>Przejazd samochodem osobowym (do 900 cm3)</td>
+                <td><p id="unCcm" th:text="${underCcm}"/></td>
+            </tr>
+            <tr>
+                <td>Przejazd samochodem osobowym (pow 900 cm3)</td>
+                <td><p id="ovCcm" th:text="${overCcm}"/></td>
+            </tr>
+            <tr>
+                <td>Przejazd motocyklem</td>
+                <td><p id="motorcycle" th:text="${motoCycle}"/></td>
+            </tr>
+            <tr>
+                <td>Przejazd motorowerem</td>
+                <td><p id="motBicycle" th:text="${motoBicycle}"/></td>
+            </tr>
+            <tr>
+                <td>Koszty przejazdów rozliczanych kilometrówką</td>
+                <td><p id="trvlCost" th:text="${travelCost}"/></td>
+            </tr>
+            <tr>
+                <td>Liczba noclegów za które przysługuje ryczałt</td>
+                <td><p id="lumpSum" th:text="${lmpSum}"/></td>
+            </tr>
+            <tr>
+                <td>Przysługujący ryczałt</td>
+                <td><p id="lump" th:text="${lmp}"/></td>
+            </tr>
+            <tr>
+                <td>Koszt noclegów stwierdzony rachunkiem</td>
+                <td><p id="sleepBill" th:text="${billSleep}"/></td>
+            </tr>
+            <tr>
+                <td>Ilość dób, za które przysługuje ryczałt za dojazdy</td>
+                <td><p id="pLumpSum" th:text="${pLmpSum}"/></td>
+            </tr>
+            <tr>
+                <td>Ryczałt za dojazdy</td>
+                <td><p id="pLump" th:text="${pLmp}"/></td>
+            </tr>
+            <tr>
+                <td>Udokumentowane koszty dojazdu</td>
+                <td><p id="returnPay" th:text="${rtrnPay}"/></td>
+            </tr>
+
+            <tr>
+                <td>Suma kosztów</td>
+                <td><p id="sumCosts" th:text="${costs}"/></td>
+            </tr>
+            <tr>
+                <td>Pobrana zaliczka</td>
+                <td><p id="advance" th:text="${advnc}"/></td>
+            </tr>
+            <tr>
+                <td>Do wypłaty</td>
+                <td><p id="payment" th:text="${paymnt}"/></td>
+            </tr>
+
             </tbody>
         </table>
     </div>

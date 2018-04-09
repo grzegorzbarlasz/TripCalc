@@ -42,6 +42,23 @@ public class CalculatorController {
         attributes.put("supper", calculateTrip.getSupperAmount());
         attributes.put("freeFood", calculateTrip.getFreeFoodCost().toString());
         attributes.put("totalDiet", calculateTrip.getDietValue().toString());
+        attributes.put("trnsprtType", calculateTrip.getTransType());
+        attributes.put("tcktPrice", calculateTrip.getTicketPrice().toString());
+        attributes.put("underCcm", calculateTrip.getUnCcm().toString());
+        attributes.put("overCcm", calculateTrip.getOvCcm().toString());
+        attributes.put("motoCycle", calculateTrip.getMotorcycle().toString());
+        attributes.put("motoBicycle", calculateTrip.getMotBicycle().toString());
+        attributes.put("travelCost", calculateTrip.getTrvlCost().toString());
+        attributes.put("lmpSum", calculateTrip.getLumpSum());
+        attributes.put("lmp", calculateTrip.getLump().toString());
+        attributes.put("billSleep", calculateTrip.getSleepBill().toString());
+        attributes.put("pLmpSum", calculateTrip.getPLumpSum());
+        attributes.put("pLmp", calculateTrip.getPLump().toString());
+        attributes.put("rtrnPay", calculateTrip.getReturnPay().toString());
+
+        attributes.put("costs", calculateTrip.getSumCosts().toString());
+        attributes.put("advnc", calculateTrip.getAdvance().toString());
+        attributes.put("paymnt", calculateTrip.getPayment().toString());
         model.addAllAttributes(attributes);
         return "result";
     }
